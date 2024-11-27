@@ -42,12 +42,50 @@
             transition: all 0.3s ease-in-out;
         }
     </style>
+    <style>
+        /* 使提示框显示在页面顶部 */
+        .alert-container {
+            position: fixed;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1050; /* 确保它在页面其他内容之上 */
+            width: 80%;
+            margin-top: 10px;
+        }
+        /* 设置alert背景颜色和透明度 */
+        .alert {
+            opacity: 0.8; /* 设置透明度，0.8是80%不透明，调整此值以改变透明度 */
+            transition: opacity 1s ease-out; /* 透明度渐变 */
+        }
+        /* 当alert关闭时使其透明度变为0 */
+        .alert.fade {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
     <div class="container text-center">
         <h2 class="mt-2 text-white title">家にいるプーさんたち</h2>
         <div class="row mt-4" id="poohContainer">
         </div>
+        
+        <!-- 消息提示框 -->
+        <div class="alert-container">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                可以试着点击图片哦～
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <script>
+            // 设置提示框在5秒后自动消失
+            setTimeout(function() {
+                $('.alert').alert('close');
+            }, 2000); // 5000毫秒，即5秒
+        </script>
+        
     </div>
 
     <!-- 模态框 -->
