@@ -10,16 +10,41 @@
             width: 100%;
             height: auto;
             cursor: pointer;
+            border: 10px solid #ffffff; 
+            border-radius: 0px; 
         }
         .modal-img {
             width: 100%;
         }
+        body {
+            background-image: url('pooh_pic/bg.jpeg'); 
+            background-size: cover;
+            background-position: center; 
+            background-attachment: fixed; 
+            background-repeat: no-repeat; 
+        }
+        .title {
+            background-color: rgb(161, 136, 120);
+        }
+        .nameLabel{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            color: #f5f5f5; 
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 轻微的文字阴影 */
+            margin-top: 10px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3); /* 背景色稍微透明 */
+            border-radius: 10px; /* 圆角 */
+            padding: 5px;
+            transition: all 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body>
-    <div class="container text-center my-4">
-        <h2 class="mb-4">家にいるプーさんたち</h2>
-        <div class="row" id="poohContainer">
+    <div class="container text-center">
+        <h2 class="mt-2 text-white title">家にいるプーさんたち</h2>
+        <div class="row mt-4" id="poohContainer">
         </div>
     </div>
 
