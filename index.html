@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home Pooh</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .pooh-img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        .modal-img {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    hello haku
+    <div class="container text-center my-4">
+        <h2 class="mb-4">家にいるプーさんたち</h2>
+        <div class="row" id="poohContainer">
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="poohName"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" class="modal-img" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const poohs = [
+            { img: 'pooh_pic/0-1.jpeg', name:'雪 雪' },
+            { img: 'pooh_pic/0-2.jpeg', name:'花 花' },
+            { img: 'pooh_pic/0-3.jpeg', name:'枫 枫' },
+            { img: 'pooh_pic/0-4.jpeg', name:'怕 怕' },
+            { img: 'pooh_pic/0-5.jpeg', name:'袄 袄' },
+            { img: 'pooh_pic/0-6.jpeg', name:'羞 羞' },
+            { img: 'pooh_pic/0-7.jpeg', name:'肚 肚' },
+            { img: 'pooh_pic/0-8.jpeg', name:'咖 咖' },
+            { img: 'pooh_pic/0-9.jpeg', name:'象 象' },
+            { img: 'pooh_pic/1-储物罐.jpeg', name:'罐 罐' },
+            { img: 'pooh_pic/1-大框子.jpeg', name:'大 大' },
+            { img: 'pooh_pic/1-小框子.jpeg', name:'小 小' },
+            { img: 'pooh_pic/1-烤箱手套.jpeg', name:'套 套' },
+            { img: 'pooh_pic/1-零钱包.jpeg', name:'包 包' },
+            { img: 'pooh_pic/1-墙面装饰.jpeg', name:'墙 墙' },
+            { img: 'pooh_pic/1-手机壳.jpeg', name:'壳 壳' },
+            { img: 'pooh_pic/1-鼠标垫.jpeg', name:'垫 垫' },
+            { img: 'pooh_pic/1-枕巾.jpeg', name:'枕 枕' }
+        ];
+
+        const container = document.getElementById('poohContainer');
+        poohs.forEach(pooh => {
+            const html = `
+                <div class="col-6 col-md-4 mb-4">
+                    <img src="${pooh.img}" alt="${pooh.name}" class="pooh-img" data-toggle="modal" data-target="#imageModal" onclick="showImage('${pooh.img}', '${pooh.name}')">
+                    <p class="nameLabel">${pooh.name}</p>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        });
+
+        function showImage(src, name) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('poohName').textContent = name;
+        }
+    </script>
 </body>
 </html>
